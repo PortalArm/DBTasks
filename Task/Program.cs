@@ -44,7 +44,7 @@ namespace Task
             var prices = new[] { 50, 120 };
             var naming = new[] { "Дешевая цена", "Средняя цена", "Дорогая цена" };
             // задание 5
-            var productsGrouped = product.GroupBy(p => prices.IndexOf(w => w > p.UnitPrice)).Select(g => new { Index = g.Key, Products = g.ToList() });
+            var productsGrouped = product.GroupBy(p => prices.IndexOf(w => w > p.UnitPrice)).Select(g => new { Index = naming[g.Key], Products = g.ToList() });
 
             using (StreamWriter Console = new StreamWriter("output.txt"))
             {
@@ -81,11 +81,11 @@ namespace Task
 
 
                 Console.WriteLine();
-                Console.WriteLine("Task 5 (Grouping by price (p<50, 50<p<120, 120<p)");
+                Console.WriteLine("Task 5 (Grouping by price (p<50, 50<=p<120, 120<=p)");
                 foreach (var p in productsGrouped)
                 {
                     Console.WriteLine();
-                    Console.WriteLine(naming[p.Index]);
+                    Console.WriteLine(p.Index);
                     foreach (var prod in p.Products)
                         Console.WriteLine("Продукт {0}, цена за штуку: {1}", prod.ProductName, prod.UnitPrice);
                 }
