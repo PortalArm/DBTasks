@@ -77,7 +77,7 @@ namespace Task
                 Console.WriteLine();
                 Console.WriteLine("Task 4 (Customers with no postal code nor region nor operator code)");
                 foreach (var cust in customersWithNoPostalRegionOpCode)
-                    Console.WriteLine(cust.CompanyName);
+                    Console.WriteLine($"{{0,-{namewidth}}}, Postal: {{1}}, Region: {{2}}, OP code: {{3}}",cust.CompanyName, cust.PostalCode, cust.Region, cust.Phone);
 
 
                 Console.WriteLine();
